@@ -1,0 +1,1 @@
+convert test.png -sepia-tone 80% test-sepia.png

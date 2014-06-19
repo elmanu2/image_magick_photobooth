@@ -1,0 +1,1 @@
+convert test-sepia.png -background grey -vignette 0x50-80-80 test-sepia-vignette.png
