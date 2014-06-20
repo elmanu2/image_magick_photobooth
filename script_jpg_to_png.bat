@@ -1,1 +1,2 @@
-convert test_orig.jpg test.png
+echo ON
+convert %1.jpg %1.png
