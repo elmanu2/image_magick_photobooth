@@ -1,5 +1,7 @@
 ECHO OFF
 
+REM Parameters found from this website : https://github.com/paulasmuth/hipster_filters
+
 echo set "test" as parameter for example
 echo input file : %1.png
 
