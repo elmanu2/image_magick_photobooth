@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "IMAGEMAGICK VERSION"
+identify -version
+
 echo "CREATE CHECKBOARD"
 sh script_create_checkboard.sh
 
