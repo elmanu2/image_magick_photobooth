@@ -36,7 +36,8 @@ sh script_watermark.sh test
 echo VINTAGE BATCH CALL
 sh script_vintage.sh sf-bridge
 
-
+echo FRAME BATCH CALL
+sh script_frame.sh test
 
 
 
