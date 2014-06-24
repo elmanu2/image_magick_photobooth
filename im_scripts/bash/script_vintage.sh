@@ -8,20 +8,36 @@ echo input file : $1.png
 width=500
 height=375
 
-echo $width x $height
+in_dir=../../input_pictures/
+out_dir=../../output_pictures/
+tmp_dir=../../tmp/
 
-convert grad-center-light.png -resize $widthx$height grad-center-light-tmp.png
-composite grad-center-light-tmp.png $1.png -compose over -gravity center $1-tmp1.png
-convert $1-tmp1.png -modulate 100,120 $1-tmp2.png
-convert $1-tmp2.png -brightness-contrast 0x20 $1-tmp3.png
+in_file=${in_dir}${1}.png
+in_grad_file=${in_dir}grad-center-light.png
+in_grad_file_resize=${tmp_dir}grad-center-light-tmp.png
+in_vign_file=${in_dir}grad-vignette.png
+in_vign_file_resize=${tmp_dir}grad-vignette-tmp.png
 
-convert grad-vignette.png -resize %width%x%height% grad-vignette-tmp.png
-composite grad-vignette-tmp.png $1-tmp3.png -compose overlay -gravity center $1-vintage.png
+out_file=${out_dir}${1}-vintage.png
+in_frame_file=${in_dir}autumn-leaves.png
+in_tmp1=${tmp_dir}${1}-vintage-tmp1.png
+in_tmp2=${tmp_dir}${1}-vintage-tmp2.png
+in_tmp3=${tmp_dir}${1}-vintage-tmp3.png
 
-rm $1-tmp1.png $1-tmp2.png $1-tmp3.png
-rm grad-center-light-tmp.png grad-vignette-tmp.png
+echo ${width} x ${height}
 
-echo output file : $1-vintage.png
+convert ${in_grad_file} -resize ${width}x${height} ${in_grad_file_resize}
+composite ${in_grad_file_resize} ${in_file} -compose over -gravity center ${in_tmp1}
+convert ${in_tmp1} -modulate 100,120 ${in_tmp2}
+convert ${in_tmp2} -brightness-contrast 0x20 ${in_tmp3}
+
+convert ${in_vign_file} -resize %width%x%height% ${in_vign_file_resize}
+composite ${in_vign_file_resize} ${in_tmp3} -compose overlay -gravity center ${out_file}
+
+rm ${in_tmp1} ${in_tmp2} ${in_tmp3}
+rm ${in_grad_file_resize} ${in_vign_file_resize}
+
+echo output file : ${out_file}
 
 
 

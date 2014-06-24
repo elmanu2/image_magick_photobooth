@@ -2,7 +2,17 @@
 
 echo OFF
 echo set "test" as parameter for example
-echo input file : $1.png
+
+
+in_dir=../../input_pictures/
+out_dir=../../output_pictures/
+
+in_file=${in_dir}${1}.png
+out_file=${out_dir}${1}-border.png
+
+echo input file : ${in_file}
 echo processing...
-convert $1.png -bordercolor black -border 10x10  $1-border.png
-echo output file : $1-border.png
+
+convert ${in_file} -bordercolor black -border 10x10  ${out_file}
+
+echo output file : ${out_file}

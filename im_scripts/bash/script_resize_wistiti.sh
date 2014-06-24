@@ -1,8 +1,15 @@
 #!/bin/bash
 
 echo OFF
-echo set "test" as parameter for example
+
+in_dir=../../input_pictures/
+out_dir=../../output_pictures/
+tmp_dir=../../tmp/
+
+in_file=${in_dir}wistiti_1024.png
+out_file=${out_dir}wistiti-resized.png
+
 echo input file : wisititi_1024.png
 echo processing...
-convert wistiti_1024.png -crop 1024x350+0+350 -resize 25%% wistiti-resized.png
-echo output file : wistiti-resized.png
+convert ${in_file} -crop 1024x350+0+350 -resize 25%% ${out_file}
+echo output file : ${out_file}

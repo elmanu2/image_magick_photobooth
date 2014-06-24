@@ -1,20 +1,30 @@
 #!/bin/bash
 
 echo set "test" as parameter for example
-echo input file : ${1}.png
 
-my_width=620
+in_dir=../../input_pictures/
+out_dir=../../output_pictures/
+tmp_dir=../../tmp/
+
+in_file=${in_dir}${1}.png
+out_file=${out_dir}${1}-frame.png
+in_frame_file=${in_dir}autumn-leaves.png
+in_tmp_frame_file=${tmp_dir}autumn-leaves-resize-tmp.png
+
+echo input file : ${in_file}
+
+width=620
 height=352
 
-echo $my_width x $height
+echo ${width} x ${height}
 
-convert autumn-leaves.png -scale ${my_width}x${height}\! autumn-leaves-resize-tmp.png
+convert ${in_frame_file} -scale ${width}x${height}\! ${in_tmp_frame_file}
 
-convert ${1}.png autumn-leaves-resize-tmp.png +swap -gravity center -compose DstOver -composite $1-frame.png
+convert ${in_file} ${in_tmp_frame_file} +swap -gravity center -compose DstOver -composite ${out_file}
 
 #autumn-leaves-resize-tmp.png
 
-echo output file : $1-frame.png
+echo output file : ${out_file}
 
 
 
