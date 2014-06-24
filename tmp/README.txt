@@ -1,0 +1,1 @@
+temporary picture file directory
