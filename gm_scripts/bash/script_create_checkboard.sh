@@ -1,5 +1,8 @@
 #!/bin/bash
 
 out_dir=../../output_pictures/
+in_dir=../../input_pictures/
 
-convert -size 640x480 pattern:checkerboard ${out_dir}checkerboard.png
+out_file=${out_dir}gm-checkboard.png
+
+convert -size 640x480 pattern:checkerboard ${out_file}
