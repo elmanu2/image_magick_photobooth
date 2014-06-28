@@ -3,10 +3,11 @@
 #Parameters found from this website : https://github.com/paulasmuth/hipster_filters
 
 echo set "test" as parameter for example
-echo input file : $1.png
+echo input file : ${1}.png
+echo input file size : ${2} x ${3}
 
-width=500
-height=375
+width=${2}
+height=${3}
 
 in_dir=../../input_pictures/
 out_dir=../../output_pictures/

@@ -11,8 +11,9 @@ in_file=${in_dir}${1}.png
 out_file=${out_dir}${1}-border.png
 
 echo input file : ${in_file}
-echo processing...
+echo border : ${2} x ${3} 
+echo processing border...
 
-convert ${in_file} -bordercolor black -border 10x10  ${out_file}
+convert ${in_file} -bordercolor black -border ${2}x${3}  ${out_file}
 
 echo output file : ${out_file}
