@@ -7,17 +7,19 @@ out_dir=../../output_pictures/
 tmp_dir=../../tmp/
 
 in_file=${in_dir}${1}.png
+tmp_file=${tmp_dir}${1}-lessalpha.png
+out_file=${out_dir}${1}-comp.png
 
-#record alpha channel
-convert ${1}.png -channel A -separate -colors 128 ${1}_alpha.png
+echo input file : ${in_file}
+echo processing wistiti compression...
 
-
+echo processing remove alpha channel...
 #remove alpha channel
-convert ${1}.png -background white -flatten ${1}_less_alpha.png
+convert ${in_file} -background white -alpha off ${tmp_file}
+echo processing alpha channel removed ${tmp_file}...
 
 #quantization
-convert ${1}_less_alpha.png -colors 128 ${1}-quantization256.png
+convert ${tmp_file} -colors 256 ${out_file}
 
-convert ${1}-quantization256.png ${1}_alpha.png -compose copy-opacity -composite rgba.png
-
+#rm ${tmp_file}
 echo output file : ${out_file}
