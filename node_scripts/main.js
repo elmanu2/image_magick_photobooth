@@ -54,12 +54,29 @@ function pic_size(filepath, callback){
 console.log(process.platform);
 
 if(platform == 'win32'){
-    process_filter(ex_nihilo_process, './script_create_checkboard.bat');
-    //process_filter(simple_process_with_sizing, './script_vintage.bat', 'test');
+    console.log('processsssss');
+    
+    process.chdir(script_dir);
+    console.log('change cwd : ' + process.cwd());
+    
+    process_filter(ex_nihilo_process, 'script_create_checkboard.bat', 'fake_filename', 0 , 0, 
+        function(){
+        //do nothing
+            //console.log("TEST");
+            process_filter(simple_process_with_sizing, 'script_vintage.bat', 'test',0 ,0 ,
+                function(){
+                //do nothing
+                process.chdir(node_dir);
+                console.log('change cwd : ' + process.cwd());
+        });
+    });
+    
+    
     
 }
+
 if(platform == 'linux'){
-    process_filter(ex_nihilo_process, './script_create_checkboard.sh');
+    //process_filter(ex_nihilo_process, './script_create_checkboard.sh');
     //process_filter(simple_process, './script_rgb2gray.sh','test');
     //process_filter(simple_process, './script_polaroid_matrix.sh','test');
     //process_filter(simple_process, './script_sepia.sh','test');
@@ -76,20 +93,23 @@ if(platform == 'linux'){
 }
 
 function process_filter(process_type, process_name, file, width, height, cb){
-    var node_script_directory = process.cwd();
-    process.chdir(script_dir);
-    console.log('change cwd : ' + process.cwd());
+    
+    console.log('PROCESS FILTER');  
+    //console.log(process_type+ process_name + file+ width + height + cb);
     process_type(process_name, file, width, height, function(){
-        process.chdir(node_script_directory);
-        console.log('change cwd : ' + process.cwd());
+        
         cb();
     });
 }
 
-function ex_nihilo_process(process_name){
+function ex_nihilo_process(process_name, file, p1 ,p2, cb){
+    console.log('ex_nihilo_process');
     process_cmd = spawn(process_name, []);
+    console.log('after spawn' + process_name);
     process_cmd.stdout.on('data', function(data){
+        console.log('command launched');
         console.log('stdout: ' + data);
+        cb();
     });
 }
 
