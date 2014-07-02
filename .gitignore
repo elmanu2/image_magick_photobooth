@@ -1,3 +1,4 @@
 output_pictures/
+node_scripts/node_modules/
 tmp/*.png
 .project

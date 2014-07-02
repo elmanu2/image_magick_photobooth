@@ -29,7 +29,7 @@ print(script_dir);
 os.chdir(script_dir);
 print("cwd %s" %(os.getcwd()));
 
-input_pic = 'test';
+input_pic = 'me';
 
 #WINDOWS
 #subprocess.call('sh script_create_checkboard.sh');
@@ -39,13 +39,13 @@ input_pic = 'test';
 subprocess.call('./script_create_checkboard.sh');
 subprocess.call('./script_border.sh %s 10 10' %input_pic, shell=True);
 subprocess.call('./script_frame.sh %s' %input_pic, shell=True);
-subprocess.call('./script_photobooth_4x4.sh %s' %input_pic, shell=True);
+subprocess.call('./script_photobooth_4x4.sh %s 10 10' %input_pic, shell=True);
 subprocess.call('./script_polaroid_matrix.sh %s' %input_pic, shell=True);
 subprocess.call('./script_sepia_matrix.sh %s' %input_pic, shell=True);
 subprocess.call('./script_sepia.sh %s' %input_pic, shell=True);
 subprocess.call('./script_resize_wistiti.sh', shell=True);
 subprocess.call('./script_watermark.sh %s' %input_pic, shell=True);
-
+subprocess.call('./script_gotham.sh %s' %input_pic, shell=True);
 
 
 file = in_pic_dir + 'test.png';

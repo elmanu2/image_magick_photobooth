@@ -1,3 +1,0 @@
-mogrify -strip template_wistiti_hd-exif.jpg 
-mogrify -profile 8BIMTEXT:exif.txt template_wistiti_hd-exif.jpg 
-
