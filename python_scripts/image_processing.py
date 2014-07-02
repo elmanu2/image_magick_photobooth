@@ -1,6 +1,9 @@
+#!/usr/bin/env python
+
 import os;
 import subprocess;
-from PIL import Image
+import Image
+import platform
 
 
 def get_image_size(filepath):
@@ -13,12 +16,12 @@ py_dir = os.getcwd();
 os.chdir('..');
 project_dir = os.getcwd();
 
-#in_pic_dir = project_dir + '\\input_pictures\\';
-#out_pic_dir = project_dir + '\\output_pictures\\';
-#script_dir = project_dir + '\\im_scripts\\bash\\';
-in_pic_dir = project_dir + '/input_pictures/';
-out_pic_dir = project_dir + '/output_pictures/';
-script_dir = project_dir + '/im_scripts/bash/';
+in_pic_dir = os.path.join(project_dir,'input_pictures/');
+out_pic_dir = os.path.join(project_dir, 'output_pictures/');
+script_dir = os.path.join(project_dir, 'im_scripts/bash/');
+#in_pic_dir = project_dir + '/input_pictures/';
+#out_pic_dir = project_dir + '/output_pictures/';
+#script_dir = project_dir + '/im_scripts/bash/';
 
 print(py_dir);
 print(project_dir);
@@ -32,10 +35,12 @@ print("cwd %s" %(os.getcwd()));
 input_pic = 'me';
 
 #WINDOWS
-#subprocess.call('sh script_create_checkboard.sh');
-#subprocess.call('./script_border.sh 10 20');
+if(platform.system() == 'Windows'):
+    subprocess.call('sh script_create_checkboard.sh');
+    subprocess.call('sh script_border.sh test 10 20');
 
 #LINUX
+<<<<<<< HEAD
 subprocess.call('./script_create_checkboard.sh');
 subprocess.call('./script_border.sh %s 10 10' %input_pic, shell=True);
 subprocess.call('./script_frame.sh %s' %input_pic, shell=True);
@@ -51,5 +56,23 @@ subprocess.call('./script_gotham.sh %s' %input_pic, shell=True);
 file = in_pic_dir + 'test.png';
 pic_size = get_image_size(file);
 subprocess.call('./script_vintage.sh %s %d %d' %(input_pic, pic_size[0],pic_size[1]), shell=True);
+=======
+if(platform.system() == 'Linux'):
+    subprocess.call('./script_create_checkboard.sh');
+    subprocess.call('./script_border.sh %s 10 10' %input_pic, shell=True);
+    subprocess.call('./script_frame.sh %s' %input_pic, shell=True);
+    subprocess.call('./script_photobooth_4x4.sh %s' %input_pic, shell=True);
+    subprocess.call('./script_polaroid_matrix.sh %s' %input_pic, shell=True);
+    subprocess.call('./script_sepia_matrix.sh %s' %input_pic, shell=True);
+    subprocess.call('./script_sepia.sh %s' %input_pic, shell=True);
+    subprocess.call('./script_resize_wistiti.sh', shell=True);
+    subprocess.call('./script_watermark.sh %s' %input_pic, shell=True);
+
+
+
+#file = in_pic_dir + 'test.png';
+#pic_size = get_image_size(file);
+#subprocess.call('./script_vintage.sh %s %d %d' %(input_pic, pic_size[0],pic_size[1]), shell=True);
+>>>>>>> 2509e96f9dfc19be3bf20161d50310ba28acef62
 
 
