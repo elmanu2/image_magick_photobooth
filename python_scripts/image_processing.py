@@ -32,11 +32,12 @@ print(script_dir);
 os.chdir(script_dir);
 print("cwd %s" %(os.getcwd()));
 
-input_pic = 'sf-bridge';
+input_pic = 'insta-origin';
 
 #WINDOWS
 if(platform.system() == 'Windows'):
     subprocess.call('sh script_create_checkboard.sh');
+    subprocess.call('sh script_rgb2gray.sh %s' %input_pic);
     subprocess.call('sh script_border.sh %s 10 20' %input_pic);
     subprocess.call('sh script_frame.sh %s' %input_pic, shell=True);
     subprocess.call('sh script_photobooth_4x4.sh %s 10 10' %input_pic, shell=True);
@@ -64,7 +65,8 @@ if(platform.system() == 'Windows'):
     
     subprocess.call('sh script_nashville.sh %s'
                     %(input_pic), shell=True);
-    
+
+
 
 #LINUX
 if(platform.system() == 'Linux'):
