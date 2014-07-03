@@ -52,7 +52,7 @@ if(platform.system() == 'Windows'):
     
     subprocess.call('sh script_toaster.sh %s %d %d %d %d' 
                     %(input_pic, pic_size[0],pic_size[1],
-                    pic_size[0]*1.5, pic_size[0]*1.5), shell=True);
+                    pic_size[0]*1.5, pic_size[1]*1.5), shell=True);
     
 
 #LINUX
