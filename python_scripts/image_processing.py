@@ -46,13 +46,24 @@ if(platform.system() == 'Windows'):
     subprocess.call('sh script_resize_wistiti.sh', shell=True);
     subprocess.call('sh script_watermark.sh %s' %input_pic, shell=True);
     subprocess.call('sh script_gotham.sh %s' %input_pic, shell=True);
-    file = in_pic_dir + 'test.png';
+    file = in_pic_dir + input_pic + '.png';
     pic_size = get_image_size(file);
     subprocess.call('sh script_vintage.sh %s %d %d' %(input_pic, pic_size[0],pic_size[1]), shell=True);
     
     subprocess.call('sh script_toaster.sh %s %d %d %d %d' 
                     %(input_pic, pic_size[0],pic_size[1],
                     pic_size[0]*1.5, pic_size[1]*1.5), shell=True);
+                    
+    subprocess.call('sh script_kelvin.sh %s %d %d'
+                    %(input_pic, pic_size[0],pic_size[1]),
+                    shell=True);
+                    
+    subprocess.call('sh script_lomo.sh %s %d %d %d %d'
+                    %(input_pic, pic_size[0],pic_size[1],
+                    pic_size[0]*1.5, pic_size[1]*1.5), shell=True);
+    
+    subprocess.call('sh script_nashville.sh %s'
+                    %(input_pic), shell=True);
     
 
 #LINUX
