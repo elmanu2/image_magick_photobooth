@@ -32,47 +32,43 @@ print(script_dir);
 os.chdir(script_dir);
 print("cwd %s" %(os.getcwd()));
 
-input_pic = 'me';
+input_pic = 'sf-bridge';
 
 #WINDOWS
 if(platform.system() == 'Windows'):
     subprocess.call('sh script_create_checkboard.sh');
-    subprocess.call('sh script_border.sh test 10 20');
+    subprocess.call('sh script_border.sh %s 10 20' %input_pic);
+    subprocess.call('sh script_frame.sh %s' %input_pic, shell=True);
+    subprocess.call('sh script_photobooth_4x4.sh %s 10 10' %input_pic, shell=True);
+    subprocess.call('sh script_polaroid_matrix.sh %s' %input_pic, shell=True);
+    subprocess.call('sh script_sepia_matrix.sh %s' %input_pic, shell=True);
+    subprocess.call('sh script_sepia.sh %s' %input_pic, shell=True);
+    subprocess.call('sh script_resize_wistiti.sh', shell=True);
+    subprocess.call('sh script_watermark.sh %s' %input_pic, shell=True);
+    subprocess.call('sh script_gotham.sh %s' %input_pic, shell=True);
+    file = in_pic_dir + 'test.png';
+    pic_size = get_image_size(file);
+    subprocess.call('sh script_vintage.sh %s %d %d' %(input_pic, pic_size[0],pic_size[1]), shell=True);
+    
+    subprocess.call('sh script_toaster.sh %s %d %d %d %d' 
+                    %(input_pic, pic_size[0],pic_size[1],
+                    pic_size[0]*1.5, pic_size[0]*1.5), shell=True);
+    
 
 #LINUX
-<<<<<<< HEAD
-subprocess.call('./script_create_checkboard.sh');
-subprocess.call('./script_border.sh %s 10 10' %input_pic, shell=True);
-subprocess.call('./script_frame.sh %s' %input_pic, shell=True);
-subprocess.call('./script_photobooth_4x4.sh %s 10 10' %input_pic, shell=True);
-subprocess.call('./script_polaroid_matrix.sh %s' %input_pic, shell=True);
-subprocess.call('./script_sepia_matrix.sh %s' %input_pic, shell=True);
-subprocess.call('./script_sepia.sh %s' %input_pic, shell=True);
-subprocess.call('./script_resize_wistiti.sh', shell=True);
-subprocess.call('./script_watermark.sh %s' %input_pic, shell=True);
-subprocess.call('./script_gotham.sh %s' %input_pic, shell=True);
-
-
-file = in_pic_dir + 'test.png';
-pic_size = get_image_size(file);
-subprocess.call('./script_vintage.sh %s %d %d' %(input_pic, pic_size[0],pic_size[1]), shell=True);
-=======
 if(platform.system() == 'Linux'):
     subprocess.call('./script_create_checkboard.sh');
     subprocess.call('./script_border.sh %s 10 10' %input_pic, shell=True);
     subprocess.call('./script_frame.sh %s' %input_pic, shell=True);
-    subprocess.call('./script_photobooth_4x4.sh %s' %input_pic, shell=True);
+    subprocess.call('./script_photobooth_4x4.sh %s 10 10' %input_pic, shell=True);
     subprocess.call('./script_polaroid_matrix.sh %s' %input_pic, shell=True);
     subprocess.call('./script_sepia_matrix.sh %s' %input_pic, shell=True);
     subprocess.call('./script_sepia.sh %s' %input_pic, shell=True);
     subprocess.call('./script_resize_wistiti.sh', shell=True);
     subprocess.call('./script_watermark.sh %s' %input_pic, shell=True);
-
-
-
-#file = in_pic_dir + 'test.png';
-#pic_size = get_image_size(file);
-#subprocess.call('./script_vintage.sh %s %d %d' %(input_pic, pic_size[0],pic_size[1]), shell=True);
->>>>>>> 2509e96f9dfc19be3bf20161d50310ba28acef62
+    subprocess.call('./script_gotham.sh %s' %input_pic, shell=True);
+    file = in_pic_dir + 'test.png';
+    pic_size = get_image_size(file);
+    subprocess.call('./script_vintage.sh %s %d %d' %(input_pic, pic_size[0],pic_size[1]), shell=True);
 
 
