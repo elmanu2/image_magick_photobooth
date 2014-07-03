@@ -27,7 +27,8 @@ in_tmp3=${tmp_dir}${1}-vintage-tmp3.png
 
 echo ${width} x ${height}
 
-convert ${in_file} -modulate 120,10,100 -fill '#222b6d' -colorize 20 -gamma 0.5 -contrast -contrast ${in_tmp1}
+convert ${in_file} -modulate 120,10,100 -fill '#222b6d' \
+        -colorize 20 -gamma 0.5 -contrast -contrast ${in_tmp1}
 convert ${in_tmp1} -bordercolor black -border 20x20 ${out_file}
 
 rm ${in_tmp1}
