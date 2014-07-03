@@ -29,7 +29,7 @@ in_tmp3=${tmp_dir}${1}-toaster-tmp3.png
 
 convert ${in_file} \( -clone 0 -fill \#330000 -colorize 100% \) \
                    \( -clone 0 -colorspace gray -negate \) \
-                   -compose blend -define compose:args:100,0 -composite \
+                   -compose blend -define compose:args=100,0 -composite \
                    ${in_tmp1}
 
 convert ${in_tmp1} -modulate 150,80,100 -gamma 1.2 -contrast -contrast ${in_tmp2}
