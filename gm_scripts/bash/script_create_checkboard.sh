@@ -5,4 +5,4 @@ in_dir=../../input_pictures/
 
 out_file=${out_dir}gm-checkboard.png
 
-convert -size 640x480 pattern:checkerboard ${out_file}
+gm convert -size 640x480 pattern:checkerboard ${out_file}

@@ -3,6 +3,12 @@
 echo "IMAGEMAGICK VERSION"
 gm identify -version
 
+echo "CREATE DESTINATION FOLDER"
+mkdir ../../output_pictures
+
+echo "CREATE TMP FOLDER"
+mkdir ../../tmp
+
 echo "CREATE CHECKBOARD"
 sh script_create_checkboard.sh
 

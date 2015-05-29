@@ -3,7 +3,7 @@
 #Parameters found from this website :http://code.tutsplus.com/tutorials/create-instagram-filters-with-php--net-24504
 
 echo call "./script_toaster.sh sf-bridge 500 375 750 562"
-echo call "./script_toaster.sh insta_origin 640 640 960 960"
+echo call "./script_toaster.sh insta-origin 640 640 960 960"
 
 echo input file : ${1}.png
 echo input file size : ${2} x ${3}

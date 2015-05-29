@@ -42,5 +42,17 @@ sh script_vintage.sh sf-bridge
 echo FRAME BATCH CALL
 sh script_frame.sh ${1}
 
+echo GOTHAM FILTER CALL
+sh script_gotham.sh insta-origin 620 352
 
+echo KELVIN FILTER CALL
+sh script_kelvin.sh insta-origin 620 352 
 
+echo LOMO FILTER CALL
+sh script_lomo.sh insta-origin 640 640 960 960
+
+echo NASHVILLE CALL
+sh script_nashville.sh insta-origin
+
+echo TOASTER CALL
+sh script_toaster.sh insta-origin 640 640 960 960
