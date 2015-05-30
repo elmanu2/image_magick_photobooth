@@ -16,3 +16,6 @@ $ ./script_test.sh sf-bridge
 
 manu@PC-DE-MANU /d/Workspace/image_magick_photobooth/im_scripts/bash (master)
 $ ./script_test.sh sf-bridge
+
+Install pil for python
+http://www.pythonware.com/products/pil/
